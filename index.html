@@ -3,9 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <p>HELLO</p>
+    <h1>Simple Request</h1>
+    <form>
+        <label for="Name_field">Name:</label>
+        <input type="text" id="Name_field" required placeholder="Your Name">
+        <br>
+        <label for="email_field">Email:</label>
+        <input type="email" id="email_field" required placeholder="Your Email">
+        <br>
+        <label for="Information_field">Information:</label>
+        <textarea type="text" id="Information_field" required placeholder="Your Information"></textarea>
+        <br>
+        <button id="sendRequest" type="submit">Send Request</button>
+    </form>
+    <script>
+        const infoField = document.getElementById('Information_field');
+        
+        
+
+        document.getElementById('sendRequest').addEventListener('click', (e) => {
+            e.preventDefault();
+            var nameInput = document.getElementById('Name_field').value;
+            var emailInput = document.getElementById('email_field').value;
+            var infoInput = document.getElementById('Information_field').value;
+            
+            fetch('https://cloud.activepieces.com/api/v1/webhooks/NRoIYPiJXGbr4eewxqUOm', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: nameInput,
+                    email: emailInput,
+                    information: infoInput
+                })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+
+            document.getElementById('Name_field').value = '';
+            document.getElementById('email_field').value = '';
+            document.getElementById('Information_field').value = '';
+        });
+    </script>
 </body>
 </html>
