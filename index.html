@@ -4,24 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Simple Request</title>
 </head>
 <body>
-    <h1>Simple Request</h1>
-    <form>
-        <label for="Name_field">Name:</label>
-        <input type="text" id="Name_field" required placeholder="Your Name">
-        <br>
-        <label for="email_field">Email:</label>
-        <input type="email" id="email_field" required placeholder="Your Email">
-        <br>
-        <label for="Information_field">Information:</label>
-        <textarea type="text" id="Information_field" required placeholder="Your Information"></textarea>
-        <br>
-        <button id="sendRequest" type="submit">Send Request</button>
-    </form>
+    <header class="site-header">
+        <div class="brand">
+            <span class="brand-mark">SR</span>
+            <div class="brand-text">
+                <span class="brand-title">Simple Request</span>
+                <span class="brand-subtitle">Fast, clear, reliable</span>
+            </div>
+        </div>
+        <nav class="site-nav">
+            <a href="#features">Features</a>
+            <a href="#process">Process</a>
+            <a href="#request">Request</a>
+        </nav>
+    </header>
+
+    <main class="page">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Request in minutes</p>
+                <h1>Tell me what you need and I will take it from there.</h1>
+                <p class="hero-lede">
+                    Clear communication, structured details, and a fast response. Share your
+                    request and I will follow up with next steps.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-value">24h</span>
+                        <span class="stat-label">Typical response</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Simple steps</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Human reviewed</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-card" id="request">
+                <h2>Send a request</h2>
+                <p class="card-note">Describe your needs so I can reply with the right solution.</p>
+                <form class="request-form">
+                    <label for="Name_field">Name</label>
+                    <input type="text" id="Name_field" required placeholder="Your name">
+
+                    <label for="email_field">Email</label>
+                    <input type="email" id="email_field" required placeholder="you@email.com">
+
+                    <label for="Information_field">Request details</label>
+                    <textarea id="Information_field" required placeholder="Tell me about your idea, timeline, and goals"></textarea>
+
+                    <button id="sendRequest" type="submit">Send request</button>
+                    <p class="form-status" id="formStatus" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <h2>What you can expect</h2>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <h3>Structured intake</h3>
+                    <p>Clear questions and fast feedback so nothing important gets missed.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Friendly updates</h3>
+                    <p>Short, direct responses with timelines and next steps.</p>
+                </article>
+                <article class="feature-card">
+                    <h3>Confident delivery</h3>
+                    <p>Thoughtful execution, polished output, and clarity at every stage.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="process" id="process">
+            <h2>How it works</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <span class="step-number">01</span>
+                    <div>
+                        <h3>Share details</h3>
+                        <p>Tell me what you need, your deadline, and the outcome you want.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">02</span>
+                    <div>
+                        <h3>Get a reply</h3>
+                        <p>I respond with questions, a plan, and clear next actions.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">03</span>
+                    <div>
+                        <h3>Move forward</h3>
+                        <p>We confirm scope and timing, then execute with confidence.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     <script>
         const infoField = document.getElementById('Information_field');
+        const statusLabel = document.getElementById('formStatus');
         
         
 
@@ -30,6 +121,8 @@
             var nameInput = document.getElementById('Name_field').value;
             var emailInput = document.getElementById('email_field').value;
             var infoInput = document.getElementById('Information_field').value;
+
+            statusLabel.textContent = 'Sending...';
             
             fetch('https://cloud.activepieces.com/api/v1/webhooks/NRoIYPiJXGbr4eewxqUOm', {
                 method: 'POST',
@@ -43,8 +136,14 @@
                 })
             })
             .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
+            .then(data => {
+                console.log(data);
+                statusLabel.textContent = 'Request sent. I will reply soon.';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                statusLabel.textContent = 'Something went wrong. Please try again.';
+            });
 
             document.getElementById('Name_field').value = '';
             document.getElementById('email_field').value = '';
