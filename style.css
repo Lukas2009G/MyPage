@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Manrope:wght@400;500;600&display=swap');
 
 :root {
-    --bg: #f3f5fb;
-    --bg-strong: #e6ecff;
-    --ink: #151928;
-    --muted: #5a637b;
-    --brand: #3b4dff;
-    --brand-dark: #2735c7;
+    --bg: #f6f2eb;
+    --bg-strong: #efe7db;
+    --ink: #2d2620;
+    --muted: #6b5f55;
+    --brand: #2f5b46;
+    --brand-dark: #234336;
     --card: #ffffff;
-    --accent: #ffb347;
-    --line: #e2e8f6;
-    --shadow: 0 20px 45px rgba(21, 25, 40, 0.14);
+    --accent: #c9824a;
+    --line: #e4dbcf;
+    --shadow: 0 20px 45px rgba(45, 38, 32, 0.12);
 }
 
 * {
@@ -20,9 +20,9 @@
 }
 
 body {
-    background: radial-gradient(circle at top left, #fef6e8 0%, var(--bg) 35%, var(--bg-strong) 100%);
+    background: radial-gradient(circle at top left, #fff8ef 0%, var(--bg) 40%, var(--bg-strong) 100%);
     color: var(--ink);
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Manrope", sans-serif;
     min-height: 100vh;
     padding: 32px 6vw 64px;
 }
@@ -38,6 +38,7 @@ a {
     align-items: center;
     gap: 24px;
     margin-bottom: 48px;
+    flex-wrap: wrap;
 }
 
 .brand {
@@ -50,12 +51,12 @@ a {
     width: 44px;
     height: 44px;
     border-radius: 14px;
-    background: linear-gradient(135deg, var(--brand), #7a8bff);
+    background: linear-gradient(135deg, var(--brand), #5a8b6f);
     display: grid;
     place-items: center;
     color: white;
     font-weight: 700;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Fraunces", serif;
 }
 
 .brand-text {
@@ -64,9 +65,9 @@ a {
 }
 
 .brand-title {
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.3px;
+    font-family: "Fraunces", serif;
+    font-weight: 700;
+    letter-spacing: 0.2px;
 }
 
 .brand-subtitle {
@@ -83,6 +84,11 @@ a {
 
 .site-nav a:hover {
     color: var(--ink);
+}
+
+.header-cta {
+    display: flex;
+    gap: 12px;
 }
 
 .page {
@@ -113,9 +119,9 @@ a {
 }
 
 h1 {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: clamp(32px, 4vw, 48px);
-    line-height: 1.1;
+    font-family: "Fraunces", serif;
+    font-size: clamp(34px, 4.2vw, 54px);
+    line-height: 1.12;
 }
 
 .hero-lede {
@@ -135,13 +141,13 @@ h1 {
     padding: 16px;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
 .stat-value {
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 22px;
-    font-weight: 600;
+    font-family: "Fraunces", serif;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .stat-label {
@@ -160,7 +166,7 @@ h1 {
 }
 
 .hero-card h2 {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Fraunces", serif;
     font-size: 24px;
     margin-bottom: 6px;
 }
@@ -187,7 +193,7 @@ h1 {
     padding: 12px 14px;
     font-size: 16px;
     font-family: inherit;
-    background: #f9fbff;
+    background: #fbfaf7;
 }
 
 .request-form textarea {
@@ -197,7 +203,7 @@ h1 {
 
 .request-form input:focus,
 .request-form textarea:focus {
-    outline: 2px solid rgba(59, 77, 255, 0.25);
+    outline: 2px solid rgba(47, 91, 70, 0.22);
     border-color: var(--brand);
 }
 
@@ -215,7 +221,30 @@ button {
 
 button:hover {
     transform: translateY(-1px);
-    box-shadow: 0 12px 20px rgba(59, 77, 255, 0.25);
+    box-shadow: 0 12px 20px rgba(47, 91, 70, 0.25);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 600;
+    background: var(--brand);
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 18px rgba(47, 91, 70, 0.2);
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
 }
 
 .form-status {
@@ -232,7 +261,7 @@ button:hover {
 
 .features h2,
 .process h2 {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Fraunces", serif;
     font-size: 28px;
 }
 
@@ -247,11 +276,11 @@ button:hover {
     padding: 20px;
     border-radius: 18px;
     border: 1px solid var(--line);
-    box-shadow: 0 14px 30px rgba(21, 25, 40, 0.08);
+    box-shadow: 0 14px 30px rgba(45, 38, 32, 0.08);
 }
 
 .feature-card h3 {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Fraunces", serif;
     margin-bottom: 8px;
 }
 
@@ -277,17 +306,17 @@ button:hover {
 }
 
 .step-number {
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Fraunces", serif;
     font-size: 20px;
     color: var(--brand);
-    background: rgba(59, 77, 255, 0.08);
+    background: rgba(47, 91, 70, 0.1);
     padding: 6px 10px;
     border-radius: 10px;
 }
 
 .step h3 {
     margin-bottom: 6px;
-    font-family: "Space Grotesk", sans-serif;
+    font-family: "Fraunces", serif;
 }
 
 .step p {
@@ -310,5 +339,9 @@ button:hover {
         gap: 14px;
     }
 
-
+    .header-cta {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
 }

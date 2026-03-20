@@ -113,10 +113,12 @@
     <script>
         const infoField = document.getElementById('Information_field');
         const statusLabel = document.getElementById('formStatus');
-        
+        const NameField = document.getElementById('Name_field');
+        const EmailField = document.getElementById('email_field');
+
         
 
-        document.getElementById('sendRequest').addEventListener('click', (e) => {
+        document.querySelector('.request-form').addEventListener('submit', (e) => {
             e.preventDefault();
             var nameInput = document.getElementById('Name_field').value;
             var emailInput = document.getElementById('email_field').value;
